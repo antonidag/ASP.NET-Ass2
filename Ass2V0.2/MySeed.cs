@@ -13,7 +13,8 @@ namespace Ass2V0._2
             context.Users.Add(new User()
             {
                 UserName = "Anton",
-                Password = "123"
+                Password = "123",
+                Admin = true
             });
             context.SaveChanges();
             context.Contacts.Add(new Contact()

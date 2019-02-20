@@ -71,16 +71,32 @@ namespace Ass2V0._2
         private void UpdateListBox()
         {
             listbox.Items.Clear();
-            int ID = 1; // Ändra detta till Global.Cunnrent.ID
-            using (UserContext ctx = new UserContext())
+            
+            if (Global.CurrentUser.Admin)
             {
-                var allContacts = ctx.Contacts;
-                var contacts = allContacts.Where(c => c.User.ID == ID).ToList();
-                listbox.DataSource = contacts;
-                listbox.DataTextField = "Info";
-                listbox.DataValueField = "ID";
-                listbox.DataBind();
+                using (UserContext ctx = new UserContext())
+                {
+                    var allContacts = ctx.Contacts.ToList();
+                    listbox.DataSource = allContacts;
+                    listbox.DataTextField = "Info";
+                    listbox.DataValueField = "ID";
+                    listbox.DataBind();
+                }
             }
+            else
+            {
+                using (UserContext ctx = new UserContext())
+                {
+                    int ID = Global.CurrentUser.ID; // Ändra detta till Global.Cunnrent.ID
+                    var allContacts = ctx.Contacts;
+                    var contacts = allContacts.Where(c => c.User.ID == ID).ToList();
+                    listbox.DataSource = contacts;
+                    listbox.DataTextField = "Info";
+                    listbox.DataValueField = "ID";
+                    listbox.DataBind();
+                }
+            }
+
         }
 
         protected void btn_Remove_Click(object sender, EventArgs e)

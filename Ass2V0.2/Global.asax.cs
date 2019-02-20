@@ -9,11 +9,11 @@ namespace Ass2V0._2
 {
     public class Global : System.Web.HttpApplication
     {
-        public static User CurrentUser;
+        public static User CurrentUser { get; private set; }
+
         protected void Application_Start(object sender, EventArgs e)
         {
             new UserContext().Users.ToList();
-            CurrentUser = new User();
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -44,6 +44,10 @@ namespace Ass2V0._2
         protected void Application_End(object sender, EventArgs e)
         {
 
+        }
+        public static void SetCurrentUser(User user)
+        {
+            CurrentUser = user;
         }
     }
 }

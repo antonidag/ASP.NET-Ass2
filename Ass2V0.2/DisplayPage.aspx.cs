@@ -11,24 +11,20 @@ namespace Ass2V0._2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            listbox.Items.Clear();
-            int ID = 1; // Ändra detta till Global.Cunnrent.ID
-            using (UserContext ctx = new UserContext())
-            {
-                var allContacts = ctx.Contacts;
-                var contacts = allContacts.Where(c => c.User.ID == ID).ToList();
-                listbox.DataSource = contacts;
-                listbox.DataTextField = "Info";
-                listbox.DataValueField = "ID";
-                listbox.DataBind();
-            }
+            if (Global.CurrentUser != null)
+                UserOrAdmin();
+            else
+                Response.Write("Login in first");
         }
-
+        
         protected void btn_search_Click(object sender, EventArgs e)
         {
             string name = textbox_search.Text;
-            int ID = 1; //Global 
-            Search(name, ID);
+            int ID = Global.CurrentUser.ID;
+            if (Global.CurrentUser.Admin)
+                SearchAdmin(name);
+            else
+                Search(name, ID);
 
         }
         private void SearchAdmin(string name)
@@ -49,6 +45,30 @@ namespace Ass2V0._2
                 var contacts = ctx.Contacts.Where(c => c.User.ID == userID && c.Name.Contains(name)).ToList();
                 listbox.DataSource = contacts;
                 listbox.DataBind();
+            }
+        }
+        private void UserOrAdmin()
+        {
+            listbox.Items.Clear();
+            if (Global.CurrentUser.Admin)
+            {
+                using (UserContext ctx = new UserContext())
+                {
+                    var allContacts = ctx.Contacts.ToList();
+                    listbox.DataSource = allContacts;
+                    listbox.DataBind();
+                }
+            }
+            else
+            {
+                using (UserContext ctx = new UserContext())
+                {
+                    int ID = Global.CurrentUser.ID;
+                    var allContacts = ctx.Contacts;
+                    var contacts = allContacts.Where(c => c.User.ID == ID).ToList();
+                    listbox.DataSource = contacts;
+                    listbox.DataBind();
+                }
             }
         }
     }

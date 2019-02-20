@@ -11,10 +11,6 @@ namespace Ass2V0._2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            using (UserContext ctx = new UserContext())
-            {
-                var user = ctx.Users.First();
-            }
         }
 
         protected void btn_login_Click(object sender, EventArgs e)
@@ -26,7 +22,11 @@ namespace Ass2V0._2
             {
                 var user = ctx.Users.ToList().Find( (u) => u.UserName == username && u.Password == password);
                 if (user != null)
+                {
+                    Global.SetCurrentUser(user);
                     Response.Redirect("DisplayPage.aspx");
+                }
+                    
             }
         }
     }
