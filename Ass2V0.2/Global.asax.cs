@@ -9,10 +9,11 @@ namespace Ass2V0._2
 {
     public class Global : System.Web.HttpApplication
     {
-
+        public static User CurrentUser;
         protected void Application_Start(object sender, EventArgs e)
         {
             new UserContext().Users.ToList();
+            CurrentUser = new User();
         }
 
         protected void Session_Start(object sender, EventArgs e)

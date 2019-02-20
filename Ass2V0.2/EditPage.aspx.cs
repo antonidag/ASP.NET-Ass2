@@ -54,5 +54,54 @@ namespace Ass2V0._2
                 return contact[0];
             }
         }
+
+        protected void btn_ok_Click(object sender, EventArgs e)
+        {
+            var index = listbox.SelectedIndex + 1;
+            string name = textbox_name.Text;
+            string email = textbox_email.Text;
+            string phone = textbox_phone.Text;
+            string address = textbox_address.Text;
+            using (UserContext ctx = new UserContext())
+            {
+                ctx.Contacts.Find(index).Name = name;
+                ctx.Contacts.Find(index).Email = email;
+                ctx.Contacts.Find(index).PhoneNumb = phone;
+                ctx.Contacts.Find(index).Address = address;
+                ctx.SaveChanges();
+
+            }
+            UpdateListBox();
+            ClearTextBoxes();
+        }
+        private void ClearTextBoxes()
+        {
+            textbox_address.Text = "";
+            textbox_email.Text = "";
+            textbox_name.Text = "";
+            textbox_phone.Text = "";
+        }
+        private void UpdateListBox()
+        {
+            listbox.Items.Clear();
+            List<ListItem> list = new List<ListItem>();
+            int ID = 1;
+            using (UserContext ctx = new UserContext())
+            {
+                var allContacts = ctx.Contacts;
+                var contacts = allContacts.Where(c => c.User.ID == ID).ToList();
+                int i = 0;
+                foreach (var c in contacts)
+                {
+                    ListItem item = new ListItem();
+                    item.Text = "ID: " + ID + c.ToString();
+                    item.Value = i.ToString();
+                    list.Add(item);
+                    i++;
+                }
+                listbox.DataSource = list;
+                listbox.DataBind();
+            }
+        }
     }
 }

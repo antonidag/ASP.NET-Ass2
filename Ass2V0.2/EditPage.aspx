@@ -18,6 +18,6 @@
     <asp:TextBox ID="textbox_phone" runat="server"></asp:TextBox>
     <h5>Email</h5>
     <asp:TextBox ID="textbox_email" runat="server"></asp:TextBox>
-    <asp:Button ID="btn_ok" runat="server" Text="OK" />
+    <asp:Button ID="btn_ok" runat="server" Text="OK" OnClick="btn_ok_Click"/>
 
 </asp:Content>
