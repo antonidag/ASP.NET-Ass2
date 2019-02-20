@@ -10,6 +10,7 @@ namespace Ass2V0._2
     {
 
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
 
         public UserContext() : base("name=UserContext")
         {

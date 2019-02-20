@@ -16,6 +16,33 @@ namespace Ass2V0._2
                 Password = "123"
             });
             context.SaveChanges();
+            context.Contacts.Add(new Contact()
+            {
+                Address = "Genarp",
+                Name = "Kalle Andersson",
+                Email = "kalle@outlook.com",
+                PhoneNumb = "070-123-456",
+                User = context.Users.Find(1)
+            });
+            context.SaveChanges();
+            context.Contacts.Add(new Contact()
+            {
+                Address = "Sodra Sandby",
+                Name = "Tobias Ekdal",
+                Email = "tobias@outlook.com",
+                PhoneNumb = "070-321-654",
+                User = context.Users.Find(1)
+            });
+            context.SaveChanges();
+            context.Contacts.Add(new Contact()
+            {
+                Address = "Bjerred",
+                Name = "Aatu Karrenen",
+                Email = "tobias@outlook.com",
+                PhoneNumb = "070-321-654",
+                User = context.Users.Find(1)
+            });
+            context.SaveChanges();
             base.Seed(context);
         }
     }
