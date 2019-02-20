@@ -13,61 +13,47 @@ namespace Ass2V0._2
         {
             if (!IsPostBack)
             {
-                List<ListItem> list = new List<ListItem>();
-                int ID = 1;
-                using (UserContext ctx = new UserContext())
-                {
-                    var allContacts = ctx.Contacts;
-                    var contacts = allContacts.Where(c => c.User.ID == ID).ToList();
-                    int i = 0;
-                    foreach (var c in contacts)
-                    {
-                        ListItem item = new ListItem();
-                        item.Text = "ID: " + ID + c.ToString();
-                        item.Value = i.ToString();
-                        list.Add(item);
-                        i++;
-                    }
-                    listbox.DataSource = list;
-                    listbox.DataBind();
-                }
+                UpdateListBox();
             }
             
         }
 
         protected void btn_Edit_Click(object sender, EventArgs e)
         {
-            var index = listbox.SelectedIndex;
-            Contact contact = GetContact(index);
+            Contact contact = GetContact(int.Parse(listbox.SelectedItem.Value));
             textbox_address.Text = contact.Address;
             textbox_email.Text = contact.Email;
             textbox_name.Text = contact.Name;
             textbox_phone.Text = contact.PhoneNumb;
+            textbox_contactID.Text = contact.ID.ToString();
+
 
         }
-        private Contact GetContact(int index)
+        private Contact GetContact(int contactID)
         {
-            int ID = 1;
             using (UserContext ctx = new UserContext())
             {
-                var contact = ctx.Contacts.Where(c => c.ID == index + 1 && c.User.ID == ID).ToList();
-                return contact[0];
+                var contact = ctx.Contacts.Find(contactID);
+                return contact;
             }
         }
 
         protected void btn_ok_Click(object sender, EventArgs e)
         {
-            var index = listbox.SelectedIndex + 1;
+
+
             string name = textbox_name.Text;
             string email = textbox_email.Text;
             string phone = textbox_phone.Text;
             string address = textbox_address.Text;
+            int contactID = int.Parse(textbox_contactID.Text);
+
             using (UserContext ctx = new UserContext())
             {
-                ctx.Contacts.Find(index).Name = name;
-                ctx.Contacts.Find(index).Email = email;
-                ctx.Contacts.Find(index).PhoneNumb = phone;
-                ctx.Contacts.Find(index).Address = address;
+                ctx.Contacts.Find(contactID).Name = name;
+                ctx.Contacts.Find(contactID).Email = email;
+                ctx.Contacts.Find(contactID).PhoneNumb = phone;
+                ctx.Contacts.Find(contactID).Address = address;
                 ctx.SaveChanges();
 
             }
@@ -80,28 +66,33 @@ namespace Ass2V0._2
             textbox_email.Text = "";
             textbox_name.Text = "";
             textbox_phone.Text = "";
+            textbox_contactID.Text = "";
         }
         private void UpdateListBox()
         {
             listbox.Items.Clear();
-            List<ListItem> list = new List<ListItem>();
-            int ID = 1;
+            int ID = 1; // Ändra detta till Global.Cunnrent.ID
             using (UserContext ctx = new UserContext())
             {
                 var allContacts = ctx.Contacts;
                 var contacts = allContacts.Where(c => c.User.ID == ID).ToList();
-                int i = 0;
-                foreach (var c in contacts)
-                {
-                    ListItem item = new ListItem();
-                    item.Text = "ID: " + ID + c.ToString();
-                    item.Value = i.ToString();
-                    list.Add(item);
-                    i++;
-                }
-                listbox.DataSource = list;
+                listbox.DataSource = contacts;
+                listbox.DataTextField = "Info";
+                listbox.DataValueField = "ID";
                 listbox.DataBind();
             }
+        }
+
+        protected void btn_Remove_Click(object sender, EventArgs e)
+        {
+            int contactID = int.Parse(listbox.SelectedItem.Value);
+            using (UserContext ctx = new UserContext())
+            {
+                ctx.Contacts.Remove(ctx.Contacts.Find(contactID));
+                ctx.SaveChanges();
+            }
+            ClearTextBoxes();
+            UpdateListBox();
         }
     }
 }

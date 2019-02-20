@@ -15,9 +15,16 @@ namespace Ass2V0._2
         public string Address { get; set; }
         public string PhoneNumb { get; set; }
         public virtual User User { get; set; }
+        public string Info
+        {
+            get
+            {
+                return "Name:" + Name + " Address: " + Address + " Phone: " + PhoneNumb + " Email: " + Email;
+            }
+        }
         public override string ToString()
         {
-            return " Name:" +  Name + " Address: " + Address + " Phone: " + PhoneNumb + " Email: " + Email;
+            return "Name:" +  Name + " Address: " + Address + " Phone: " + PhoneNumb + " Email: " + Email;
         }
     }
 }

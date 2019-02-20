@@ -3,5 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h4>Display Contacts</h4>
-    <asp:ListBox ID="listbox" runat="server"></asp:ListBox>
+    <asp:TextBox ID="textbox_search" runat="server" CssClass="form-control" Width="300px"></asp:TextBox>
+    <asp:Button ID="btn_search" runat="server" OnClick="btn_search_Click"  Text="Search"/>
+    <br />
+    <br />
+    <asp:ListBox ID="listbox" runat="server" Width="50%" Height="500px"></asp:ListBox>
 </asp:Content>
