@@ -16,5 +16,18 @@ namespace Ass2V0._2
                 var user = ctx.Users.First();
             }
         }
+
+        protected void btn_login_Click(object sender, EventArgs e)
+        {
+            string username = textbox_username.Text;
+            string password = textbox_password.Text;
+
+            using (UserContext ctx = new UserContext())
+            {
+                var user = ctx.Users.ToList().Find( (u) => u.UserName == username && u.Password == password);
+                if (user != null)
+                    Response.Redirect("DisplayPage.aspx");
+            }
+        }
     }
 }

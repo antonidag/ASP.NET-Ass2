@@ -12,7 +12,8 @@ namespace Ass2V0._2
         {
             context.Users.Add(new User()
             {
-                Name = "Anton",
+                UserName = "Anton",
+                Password = "123"
             });
             context.SaveChanges();
             base.Seed(context);

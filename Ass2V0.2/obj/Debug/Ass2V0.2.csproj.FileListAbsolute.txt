@@ -11,3 +11,15 @@ C:\Users\antonidag\Documents\Visual Studio 2017\Projects\Ass2V0.2\Ass2V0.2\obj\D
 C:\Users\antonidag\Documents\Visual Studio 2017\Projects\Ass2V0.2\Ass2V0.2\obj\Debug\Ass2V0.2.csproj.CoreCompileInputs.cache
 C:\Users\antonidag\Documents\Visual Studio 2017\Projects\Ass2V0.2\Ass2V0.2\obj\Debug\Ass2V0.2.dll
 C:\Users\antonidag\Documents\Visual Studio 2017\Projects\Ass2V0.2\Ass2V0.2\obj\Debug\Ass2V0.2.pdb
+C:\Users\Anton\Documents\GitHub\ASP.NET-Ass2\Ass2V0.2\bin\Ass2V0.2.dll.config
+C:\Users\Anton\Documents\GitHub\ASP.NET-Ass2\Ass2V0.2\bin\Ass2V0.2.dll
+C:\Users\Anton\Documents\GitHub\ASP.NET-Ass2\Ass2V0.2\bin\Ass2V0.2.pdb
+C:\Users\Anton\Documents\GitHub\ASP.NET-Ass2\Ass2V0.2\bin\EntityFramework.dll
+C:\Users\Anton\Documents\GitHub\ASP.NET-Ass2\Ass2V0.2\bin\EntityFramework.SqlServer.dll
+C:\Users\Anton\Documents\GitHub\ASP.NET-Ass2\Ass2V0.2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Anton\Documents\GitHub\ASP.NET-Ass2\Ass2V0.2\bin\EntityFramework.xml
+C:\Users\Anton\Documents\GitHub\ASP.NET-Ass2\Ass2V0.2\bin\EntityFramework.SqlServer.xml
+C:\Users\Anton\Documents\GitHub\ASP.NET-Ass2\Ass2V0.2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Anton\Documents\GitHub\ASP.NET-Ass2\Ass2V0.2\obj\Debug\Ass2V0.2.csprojResolveAssemblyReference.cache
+C:\Users\Anton\Documents\GitHub\ASP.NET-Ass2\Ass2V0.2\obj\Debug\Ass2V0.2.dll
+C:\Users\Anton\Documents\GitHub\ASP.NET-Ass2\Ass2V0.2\obj\Debug\Ass2V0.2.pdb

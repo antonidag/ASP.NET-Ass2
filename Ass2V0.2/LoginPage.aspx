@@ -2,4 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <h4>Username:</h4>
+    <asp:TextBox ID="textbox_username" runat="server" Width="300px" CssClass="form-control"></asp:TextBox>
+    <h4>Password:</h4>
+    <asp:TextBox ID="textbox_password" runat="server" Width="300px" CssClass="form-control"></asp:TextBox>
+    <asp:Button ID="btn_login" runat="server" CssClass="btn btn-success" Text="Login" OnClick="btn_login_Click"/>
 </asp:Content>
