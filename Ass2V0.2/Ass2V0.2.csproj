@@ -77,6 +77,7 @@
     <Content Include="EditPage.aspx" />
     <Content Include="ErrorPage.aspx" />
     <Content Include="HomePage.aspx" />
+    <Content Include="img\adventure.jpg" />
     <Content Include="MasterPage.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -90,6 +91,7 @@
     <Content Include="Global.asax" />
     <Content Include="LoginPage.aspx" />
     <Content Include="NewContact.aspx" />
+    <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

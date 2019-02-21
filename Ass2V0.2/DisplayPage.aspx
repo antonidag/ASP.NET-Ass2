@@ -2,10 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h4>Display Contacts</h4>
-    <asp:TextBox ID="textbox_search" runat="server" CssClass="form-control" Width="300px"></asp:TextBox>
-    <asp:Button ID="btn_search" runat="server" OnClick="btn_search_Click"  Text="Search"/>
-    <br />
-    <br />
-    <asp:ListBox ID="listbox" runat="server" Width="50%" Height="500px"></asp:ListBox>
+    <div class="container">
+        <div class="jumbotron">
+            <h3>Display Contacts</h3>
+            <asp:TextBox ID="textbox_search" runat="server" CssClass="form-control" Width="300px"></asp:TextBox>
+            <asp:Button ID="btn_search" runat="server" OnClick="btn_search_Click"  CssClass="btn btn-success" Text="Search"/>
+            <br />
+            <br />
+            <asp:ListBox ID="listbox" runat="server" Height="500px"></asp:ListBox>
+        </div>
+    </div>
+
 </asp:Content>
