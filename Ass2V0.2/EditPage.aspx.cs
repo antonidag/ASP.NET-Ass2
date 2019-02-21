@@ -11,11 +11,13 @@ namespace Ass2V0._2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                UpdateListBox();
-            }
-            
+            if (Global.CurrentUser == null)
+                Response.Redirect("ErrorPage.aspx");
+            else
+                if (!IsPostBack)
+                    UpdateListBox();
+
+
         }
 
         protected void btn_Edit_Click(object sender, EventArgs e)

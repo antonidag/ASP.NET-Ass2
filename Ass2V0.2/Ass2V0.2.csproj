@@ -75,6 +75,7 @@
   <ItemGroup>
     <Content Include="DisplayPage.aspx" />
     <Content Include="EditPage.aspx" />
+    <Content Include="ErrorPage.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="MasterPage.Master" />
     <None Include="packages.config" />
@@ -106,6 +107,13 @@
     </Compile>
     <Compile Include="EditPage.aspx.designer.cs">
       <DependentUpon>EditPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

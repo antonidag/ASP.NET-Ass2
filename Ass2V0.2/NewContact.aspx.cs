@@ -12,18 +12,58 @@ namespace Ass2V0._2
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Global.CurrentUser == null)
-                Response.Write("Login in first");
+                Response.Redirect("ErrorPage.aspx");
+            else
+                if(!IsPostBack)
+                    UpdateDropList();
                 
         }
+        private void UpdateDropList()
+        {
+            if (Global.CurrentUser.Admin)
+            {
+                using (UserContext ctx = new UserContext())
+                {
+                    var users = ctx.Users.ToList();
+                    droplist_users.DataSource = users;
+                    droplist_users.DataTextField = "UserName";
+                    droplist_users.DataValueField = "ID";
+                    droplist_users.DataBind();
+                }
+            }
+            else
+            {
+                using (UserContext ctx = new UserContext())
+                {
+                    var user = ctx.Users.ToList();
+                    droplist_users.DataSource = user;
+                    droplist_users.DataTextField = "UserName";
+                    droplist_users.DataValueField = "ID";
+                    droplist_users.DataBind();
+                    droplist_users.SelectedValue = Global.CurrentUser.ID.ToString();
+                    droplist_users.Enabled = false;
+                }
 
+            }
+
+        }
         protected void btn_create_Click(object sender, EventArgs e)
         {
             string name = textbox_name.Text;
             string address = textbox_address.Text;
             string email = textbox_email.Text;
             string phone = textbox_phone.Text;
-            CreateContact(name, address, email, phone, Global.CurrentUser.ID);
+            int ID = int.Parse(droplist_users.SelectedValue);
+            CreateContact(name, address, email, phone, ID);
+            ClearTextBoxes();
 
+        }
+        private void ClearTextBoxes()
+        {
+            textbox_address.Text = "";
+            textbox_email.Text = "";
+            textbox_name.Text = "";
+            textbox_phone.Text = "";
         }
         private void CreateContact(string name, string address,string email, string phone, int userID)
         {

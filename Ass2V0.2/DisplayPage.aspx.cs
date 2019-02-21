@@ -11,10 +11,11 @@ namespace Ass2V0._2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Global.CurrentUser != null)
-                UserOrAdmin();
+            if (Global.CurrentUser == null)
+                Response.Redirect("ErrorPage.aspx");
             else
-                Response.Write("Login in first");
+                UserOrAdmin();
+
         }
         
         protected void btn_search_Click(object sender, EventArgs e)
