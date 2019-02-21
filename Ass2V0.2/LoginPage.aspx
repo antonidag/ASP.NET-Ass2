@@ -9,7 +9,7 @@
             <h4>Username:</h4>
             <asp:TextBox ID="textbox_username" runat="server" Width="300px" CssClass="form-control"></asp:TextBox>
             <h4>Password:</h4>
-            <asp:TextBox ID="textbox_password" runat="server" Width="300px" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="textbox_password" runat="server" Width="300px" TextMode="Password" CssClass="form-control"></asp:TextBox>
             <asp:Button ID="btn_login" runat="server" CssClass="btn btn-primary" Text="Login" OnClick="btn_login_Click" />
         </div>
     </div>
