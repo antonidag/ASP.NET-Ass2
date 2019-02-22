@@ -25,6 +25,9 @@
                 <li><a href="EditPage.aspx">Edit Contacts</a></li>
                 <li><a href="NewContact.aspx">New Contact</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="LogoutPage.aspx" ><span class="glyphicon glyphicon-user"></span> Log out</a></li>
+           </ul>
   </div>
 </nav>
     <form id="form1" runat="server">

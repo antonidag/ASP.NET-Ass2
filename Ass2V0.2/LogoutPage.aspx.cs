@@ -7,11 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace Ass2V0._2
 {
-    public partial class MasterPage : System.Web.UI.MasterPage
+    public partial class LogoutPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Global.SetCurrentUser(null);
+            Response.Redirect("HomePage.aspx");
         }
     }
 }
